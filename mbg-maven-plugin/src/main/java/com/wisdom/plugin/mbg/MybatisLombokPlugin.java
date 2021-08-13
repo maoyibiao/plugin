@@ -10,7 +10,7 @@ import java.util.List;
  * @author maoyibiao
  * 添加Po的lombok注解
  */
-public class LombokPlugin extends PluginAdapter {
+public class MybatisLombokPlugin extends PluginAdapter {
 
     @Override
     public boolean validate(List<String> list) {

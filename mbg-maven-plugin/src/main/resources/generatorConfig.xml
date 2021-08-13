@@ -9,22 +9,18 @@
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
         <property name="javaFileEncoding" value="UTF-8"/>
-        <plugin type="com.wisdom.plugin.mbg.LombokPlugin"/>
         <!-- 为模型生成序列化方法-->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <!-- 为生成的Java模型创建一个toString方法 -->
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
         <!--生成mapper.xml时覆盖原文件-->
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
-
+        <!--生成MapperExt扩展-->
         <plugin type="com.wisdom.plugin.mbg.MybatisMapperExtPlugin"/>
-        <commentGenerator type="com.wisdom.plugin.mbg.CommentGenerator">
-            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
-            <property name="suppressAllComments" value="true"/>
-            <property name="suppressDate" value="true"/>
-            <property name="addRemarkComments" value="true"/>
-        </commentGenerator>
-
+        <!--生成Po swagger注解-->
+        <plugin type="com.wisdom.plugin.mbg.MybatisSwaggerPlugin" />
+        <!--生成Po Lombok注解-->
+        <plugin type="com.wisdom.plugin.mbg.MybatisLombokPlugin"/>
         <jdbcConnection driverClass="${spring.datasource.driver-class-name}"
                         connectionURL="${spring.datasource.url}"
                         userId="${spring.datasource.username}"
