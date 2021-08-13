@@ -4,15 +4,20 @@
 
 Mybatis Generator Maven Plugin插件，添加maven plugin依赖后可在idea的maven plugin中运行mbg:generator可自动生成代码
 
-###默认配置的生成内容：
+### 默认配置的生成内容：
 
 1）生成Po增加lombok的@Data、@NoArgsConstructor、@AllArgsConstructor注解
+
 2）生成Po读取数据表的字段备注信息并添加Swagger注解@ApiModelProperty(value = "分类图标")
+
 3）开发过程中多次数据库结构的调整重新生成可能会有文件覆盖或追加的问题，添加了MapperExt的扩展文件生成，开发者的扩展可以在该类和XML中进行编写。其中二次生成的po,mapper会覆盖mapperExt不会覆盖
+
 4）如需要调整配置也可以在Resource下添加自己的generatorConfig.xml
 
-###配置
+### 配置
+
 1）上传至Maven仓库 
+
 2）创建SpringBoot项目并配置pom和properties
 
 
