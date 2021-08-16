@@ -4,6 +4,10 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
 import java.util.HashMap;
 
+/**
+ * @author maoyibiao
+ * 内置默认配置
+ */
 public class DefaultProperites extends HashMap<String,Object> {
     private final static Object[][] defaultParams = {
             {"mbg.globalConfig.author","MybatisPlus Generator"},

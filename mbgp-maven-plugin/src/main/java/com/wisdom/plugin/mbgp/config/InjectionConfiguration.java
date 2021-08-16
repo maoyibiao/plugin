@@ -8,7 +8,10 @@ import com.wisdom.plugin.mbgp.context.GeneratorContext;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @author maoyibiao
+ * 自定义mapper生成
+ */
 public class InjectionConfiguration implements IGeneratorConfiguration<InjectionConfig> {
     @Override
     public InjectionConfig config(GeneratorContext generatorContext, InjectionConfig config) {

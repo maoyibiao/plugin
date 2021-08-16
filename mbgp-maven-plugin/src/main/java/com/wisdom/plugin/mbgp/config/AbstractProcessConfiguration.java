@@ -9,6 +9,10 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * @author maoyibiao
+ * 统一赋值逻辑
+ */
 public abstract class AbstractProcessConfiguration<T> implements IGeneratorConfiguration<T>{
     public T config(GeneratorContext context,T config){
         Field[] fields = config.getClass().getDeclaredFields();
