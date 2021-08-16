@@ -1,4 +1,4 @@
-package com.wisdom.plugin.mbg;
+package com.wisdom.plugin.mbg.plugin;
 
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
