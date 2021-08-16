@@ -16,11 +16,11 @@
         <!--生成mapper.xml时覆盖原文件-->
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
         <!--生成MapperExt扩展-->
-        <plugin type="com.wisdom.plugin.mbg.MybatisMapperExtPlugin"/>
+        <plugin type="com.wisdom.plugin.mbg.plugin.MybatisMapperExtPlugin"/>
         <!--生成Po swagger注解-->
-        <plugin type="com.wisdom.plugin.mbg.MybatisSwaggerPlugin" />
+        <plugin type="com.wisdom.plugin.mbg.plugin.MybatisSwaggerPlugin" />
         <!--生成Po Lombok注解-->
-        <plugin type="com.wisdom.plugin.mbg.MybatisLombokPlugin"/>
+        <plugin type="com.wisdom.plugin.mbg.plugin.MybatisLombokPlugin"/>
         <jdbcConnection driverClass="${spring.datasource.driver-class-name}"
                         connectionURL="${spring.datasource.url}"
                         userId="${spring.datasource.username}"

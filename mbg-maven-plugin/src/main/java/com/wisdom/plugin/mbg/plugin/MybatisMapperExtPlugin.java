@@ -1,5 +1,6 @@
-package com.wisdom.plugin.mbg;
+package com.wisdom.plugin.mbg.plugin;
 
+import com.wisdom.plugin.mbg.generator.BlankXMLMapperGenerator;
 import org.mybatis.generator.api.GeneratedJavaFile;
 import org.mybatis.generator.api.GeneratedXmlFile;
 import org.mybatis.generator.api.IntrospectedTable;

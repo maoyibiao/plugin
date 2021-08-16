@@ -11,5 +11,21 @@
 
     <artifactId>plugin-demo-mbgp</artifactId>
 
+    <build>
+        <plugins>
 
+            <plugin>
+                <groupId>com.wisdom.plugin</groupId>
+                <artifactId>mbgp-maven-plugin</artifactId>
+                <version>${project.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql-connector.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 </project>

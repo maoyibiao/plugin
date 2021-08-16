@@ -1,4 +1,4 @@
-package com.wisdom.plugin.mbg;
+package com.wisdom.plugin.mbg.generator;
 
 import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.Document;
