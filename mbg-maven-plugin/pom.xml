@@ -14,6 +14,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.wisdom.plugin</groupId>
+            <artifactId>plugin-parent</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-plugin-api</artifactId>
             <version>3.5.4</version>

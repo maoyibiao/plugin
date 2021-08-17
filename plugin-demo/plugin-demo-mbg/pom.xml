@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.wisdom.plugin</groupId>
-            <artifactId>plugin-parent</artifactId>
+            <artifactId>plugin-demo-parent</artifactId>
         </dependency>
     </dependencies>
     <build>

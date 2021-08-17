@@ -11,6 +11,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="plugin-parent" />
+    <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.28" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-plugin-api:3.5.4" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-model:3.5.4" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-artifact:3.5.4" level="project" />

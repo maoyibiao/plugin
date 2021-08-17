@@ -5,12 +5,13 @@ import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import com.wisdom.plugin.mbgp.config.*;
+import com.wisdom.plugin.utils.PluginConfig;
 
-import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.Properties;
+import java.util.logging.Logger;
 
 public class GeneratorContext extends HashMap<String,Object> {
+    private Logger logger = Logger.getLogger(GeneratorContext.class.getName());
     private DefaultProperites defaultProperites = new DefaultProperites();
     private GlobalConfiguration globalConfiguration;
     private DataSourceConfiguration dataSourceConfiguration;
@@ -31,19 +32,16 @@ public class GeneratorContext extends HashMap<String,Object> {
     };
     private StrategyConfig strategyConfig = new StrategyConfig();
 
-    private GeneratorContext(Properties properties){
-        Enumeration<?> enumeration = properties.propertyNames();
-        while (enumeration.hasMoreElements()){
-            String key = enumeration.nextElement().toString();
-            String value = properties.get(key).toString();
-            this.put(key,value);
-        }
+    private GeneratorContext(PluginConfig pc){
+        this.putAll(pc);
         this.putAll(defaultProperites);
+        logger.info(this.toString());
     }
 
+
     public GeneratorContext(GlobalConfiguration gc,DataSourceConfiguration dc,InjectionConfiguration ic,
-                            PackageConfiguration pc,StrategyConfiguration sc,TemplateConfiguartion tc,Properties properties){
-        this(properties);
+                            PackageConfiguration pc,StrategyConfiguration sc,TemplateConfiguartion tc,PluginConfig p){
+        this(p);
         this.globalConfiguration = gc;
         this.dataSourceConfiguration = dc;
         this.injectionConfiguration = ic;

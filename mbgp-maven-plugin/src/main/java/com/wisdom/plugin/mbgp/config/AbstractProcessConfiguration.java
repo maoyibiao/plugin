@@ -19,7 +19,7 @@ public abstract class AbstractProcessConfiguration<T> implements IGeneratorConfi
         for(Field field:fields) {
             String fieldName = field.getName();
             String className = config.getClass().getSimpleName();
-            String key = "mbg." + className.substring(0,1).toLowerCase() + className.substring(1) + "." + fieldName;
+            String key = "mbgp." + className.substring(0,1).toLowerCase() + className.substring(1) + "." + fieldName;
             if(context.containsKey(key)) {
                 Object value = context.get(key);
                 ReflectionUtils.makeAccessible(field);
