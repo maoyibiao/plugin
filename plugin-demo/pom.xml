@@ -14,6 +14,7 @@
     <modules>
         <module>plugin-demo-mbg</module>
         <module>plugin-demo-mbgp</module>
+        <module>plugin-demo-parent</module>
     </modules>
 
 

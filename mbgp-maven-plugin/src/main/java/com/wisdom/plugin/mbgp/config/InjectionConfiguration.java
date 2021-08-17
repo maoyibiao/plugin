@@ -27,8 +27,8 @@ public class InjectionConfiguration implements IGeneratorConfiguration<Injection
             @Override
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                String location = generatorContext.containsKey("mbg.packageConfig.xml")?
-                        generatorContext.get("mbg.packageConfig.xml").toString():generatorContext.get("mbg.packageConfig.parent").toString() + ".mapper";
+                String location = generatorContext.containsKey("mbgp.packageConfig.xml")?
+                        generatorContext.get("mbgp.packageConfig.xml").toString():generatorContext.get("mbgp.packageConfig.parent").toString() + ".mapper";
                 return  System.getProperty("user.dir") + "/src/main/resources/" + location.replaceAll("\\.","/")
                         + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
             }

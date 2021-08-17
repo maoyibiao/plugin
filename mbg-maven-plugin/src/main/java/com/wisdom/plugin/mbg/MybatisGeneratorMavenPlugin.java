@@ -73,7 +73,7 @@ public class MybatisGeneratorMavenPlugin extends AbstractMojo {
                 getLog().warn( warning );
             }
         }catch (Exception e){
-            getLog().error(e);
+            e.printStackTrace();
         }
     }
 }

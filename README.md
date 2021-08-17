@@ -67,7 +67,7 @@ Mybatis plus Generator Maven Plugin插件
 
 1）上传至Maven仓库 
 
-2）创建SpringBoot项目并配置pom和properties
+2）创建SpringBoot项目并配置pom和properties、yml文件
 
 pom.xml
 
@@ -96,14 +96,34 @@ spring.datasource.username=root
 spring.datasource.password=root
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
-mbg.packageConfig.parent=com.wisdom.plugin.demo.mbg
-#mbg.packageConfig.entity=com.wisdom.plugin.demo.mbg.po
-#mbg.packageConfig.mapper=com.wisdom.plugin.demo.mbg.mapper
-#mbg.packageConfig.xml=com.wisdom.plugin.demo.mbg.mapper
+mbg.packageConfig.parent=com.wisdom.plugin.demo.mbgp
+#mbg.packageConfig.entity=com.wisdom.plugin.demo.mbgp.po
+#mbg.packageConfig.mapper=com.wisdom.plugin.demo.mbgp.mapper
+#mbg.packageConfig.xml=com.wisdom.plugin.demo.mbgp.mapper
 
 ````
 
-如需要调配置文件位置可以在pom中添加properties属性
+application.yml
+
+````
+
+
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.160.224:3306/mall?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+mbgp:
+  packageConfig:
+    parent: com.wisdom.plugin.demo.mbgp
+
+
+````
+
+默认读取配置文件的位置是/application.properties和/application.yml。也可以使用spring-boot的spring.profiles.active=dev来指定其他环境的配置文件位置。如需要调配置文件位置可以在pom中添加properties属性
 
 ````
 
@@ -126,7 +146,7 @@ mbg.packageConfig.parent=com.wisdom.plugin.demo.mbg
 ````
 
 插件提供默认配置，除了生成路径其他可以不配置，如果需要调整默认配置可以在properties中直接修改参数，
-参数格式：mbg.对象名.属性=值。如：mbg.globalConfig.swagger2=false。当然也可以通过重写类后在pom中配置自定义的类路径
+参数格式：mbgp.对象名.属性=值。如：mbgp.globalConfig.swagger2=false。当然也可以通过重写类后在pom中配置自定义的类路径
 
 ````
 

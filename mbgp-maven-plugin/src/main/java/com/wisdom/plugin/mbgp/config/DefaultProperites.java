@@ -10,22 +10,22 @@ import java.util.HashMap;
  */
 public class DefaultProperites extends HashMap<String,Object> {
     private final static Object[][] defaultParams = {
-            {"mbg.globalConfig.author","MybatisPlus Generator"},
-            {"mbg.globalConfig.open",false},
-            {"mbg.globalConfig.outputDir",System.getProperty("user.dir") + "/src/main/java"},
-            {"mbg.globalConfig.swagger2",true},
-            {"mbg.templateConfig.controller",""},
-            {"mbg.templateConfig.service",""},
-            {"mbg.templateConfig.serviceImpl",""},
-            {"mbg.templateConfig.xml",""},
-            {"mbg.strategyConfig.naming", NamingStrategy.underline_to_camel},
-            {"mbg.strategyConfig.columnNaming",NamingStrategy.underline_to_camel},
-            {"mbg.strategyConfig.entityLombokModel",true},
-            {"mbg.strategyConfig.restControllerStyle",false},
-            {"mbg.strategyConfig.enableSqlFilter",false},
-            {"mbg.strategyConfig.include",".*"},
-            {"mbg.strategyConfig.setTablePrefix",true},
-            {"mbg.strategyConfig.restControllerStyle",false},
+            {"mbgp.globalConfig.author","MybatisPlus Generator"},
+            {"mbgp.globalConfig.open",false},
+            {"mbgp.globalConfig.outputDir",System.getProperty("user.dir") + "/src/main/java"},
+            {"mbgp.globalConfig.swagger2",true},
+            {"mbgp.templateConfig.controller",""},
+            {"mbgp.templateConfig.service",""},
+            {"mbgp.templateConfig.serviceImpl",""},
+            {"mbgp.templateConfig.xml",""},
+            {"mbgp.strategyConfig.naming", NamingStrategy.underline_to_camel},
+            {"mbgp.strategyConfig.columnNaming",NamingStrategy.underline_to_camel},
+            {"mbgp.strategyConfig.entityLombokModel",true},
+            {"mbgp.strategyConfig.restControllerStyle",false},
+            {"mbgp.strategyConfig.enableSqlFilter",false},
+            {"mbgp.strategyConfig.include",".*"},
+            {"mbgp.strategyConfig.setTablePrefix",true},
+            {"mbgp.strategyConfig.restControllerStyle",false},
     };
     {
         for(Object[]  defaultParam: defaultParams){
