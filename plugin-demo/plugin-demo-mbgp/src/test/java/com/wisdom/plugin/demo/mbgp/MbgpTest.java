@@ -17,8 +17,8 @@ public class MbgpTest {
     private OmsOrderMapper omsOrderMapper;
     @Test
     public void test(){
-        QueryWrapper qw = new QueryWrapper();
-        qw.isNotNull("coupon_id");
-        System.out.println(omsOrderMapper.selectPage(new Page<OmsOrder>(1,5),qw));
+        //QueryWrapper qw = new QueryWrapper();
+        //qw.isNotNull("coupon_id");
+        //System.out.println(omsOrderMapper.selectPage(new Page<OmsOrder>(1,5),qw));
     }
 }
