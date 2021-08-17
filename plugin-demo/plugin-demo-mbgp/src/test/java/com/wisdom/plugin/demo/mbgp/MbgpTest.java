@@ -13,8 +13,8 @@ import java.sql.Wrapper;
 
 @SpringBootTest
 public class MbgpTest {
-    @Autowired
-    private OmsOrderMapper omsOrderMapper;
+    //@Autowired
+    //private OmsOrderMapper omsOrderMapper;
     @Test
     public void test(){
         //QueryWrapper qw = new QueryWrapper();
