@@ -59,7 +59,7 @@ Mybatis plus Generator Maven Plugin插件
 
 ### 默认配置的生成内容：
 
-1）生成po、mapper类并包含lombok和Swagger注解
+1）生成po、mapper.java、mapper.xml、junitTest并包含lombok和Swagger注解
 
 2）生成扩展用的mapper.xml文件给与开发者自定义编写
 
@@ -100,7 +100,8 @@ mbgp.packageConfig.parent=com.wisdom.plugin.demo.mbgp
 #mbgp.packageConfig.entity=com.wisdom.plugin.demo.mbgp.po
 #mbgp.packageConfig.mapper=com.wisdom.plugin.demo.mbgp.mapper
 #mbgp.packageConfig.xml=com.wisdom.plugin.demo.mbgp.mapper
-
+#simple 生成一个 && off 不生成 && 其他值生成全部
+#mbgp.testConfig.isTest=simple
 ````
 
 application.yml

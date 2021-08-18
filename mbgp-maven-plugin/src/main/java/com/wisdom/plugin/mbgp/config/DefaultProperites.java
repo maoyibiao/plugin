@@ -26,6 +26,8 @@ public class DefaultProperites extends HashMap<String,Object> {
             {"mbgp.strategyConfig.include",".*"},
             {"mbgp.strategyConfig.setTablePrefix",true},
             {"mbgp.strategyConfig.restControllerStyle",false},
+            //simple 生成一个 && off 不生成 && 其他值生成全部
+            {"mbgp.testConfig.isTest","simple"}
     };
     {
         for(Object[]  defaultParam: defaultParams){

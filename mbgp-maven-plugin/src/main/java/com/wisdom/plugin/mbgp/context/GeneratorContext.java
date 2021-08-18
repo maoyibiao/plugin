@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import com.wisdom.plugin.mbgp.config.*;
+import com.wisdom.plugin.mbgp.template.DefaultFreemarkerTemplateEngine;
 import com.wisdom.plugin.utils.PluginConfig;
 
 import java.util.HashMap;
@@ -65,7 +66,7 @@ public class GeneratorContext extends HashMap<String,Object> {
         this.strategyConfig = this.strategyConfiguration.config(this,strategyConfig);
         strategyConfig.setTablePrefix(packageConfig.getModuleName() + "_");
         mpg.setStrategy(strategyConfig);
-        mpg.setTemplateEngine(new FreemarkerTemplateEngine()).execute();
+        mpg.setTemplateEngine(new DefaultFreemarkerTemplateEngine()).execute();
 
     }
 

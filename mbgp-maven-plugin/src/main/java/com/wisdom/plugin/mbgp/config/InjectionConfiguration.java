@@ -13,13 +13,12 @@ import java.util.List;
  * 自定义mapper生成
  */
 public class InjectionConfiguration implements IGeneratorConfiguration<InjectionConfig> {
+    // 如果模板引擎是 freemarker
+    private String templatePath = "/templates/mapper.xml.ftl";
+    // 如果模板引擎是 velocity
+    //private String templatePath = "/templates/mapper.xml.vm";
     @Override
     public InjectionConfig config(GeneratorContext generatorContext, InjectionConfig config) {
-        // 如果模板引擎是 freemarker
-        String templatePath = "/templates/mapper.xml.ftl";
-        // 如果模板引擎是 velocity
-        // String templatePath = "/templates/mapper.xml.vm";
-
         // 自定义输出配置
         List<FileOutConfig> focList = new ArrayList<>();
         // 自定义配置会被优先输出
