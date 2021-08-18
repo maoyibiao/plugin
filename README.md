@@ -96,10 +96,10 @@ spring.datasource.username=root
 spring.datasource.password=root
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
-mbg.packageConfig.parent=com.wisdom.plugin.demo.mbgp
-#mbg.packageConfig.entity=com.wisdom.plugin.demo.mbgp.po
-#mbg.packageConfig.mapper=com.wisdom.plugin.demo.mbgp.mapper
-#mbg.packageConfig.xml=com.wisdom.plugin.demo.mbgp.mapper
+mbgp.packageConfig.parent=com.wisdom.plugin.demo.mbgp
+#mbgp.packageConfig.entity=com.wisdom.plugin.demo.mbgp.po
+#mbgp.packageConfig.mapper=com.wisdom.plugin.demo.mbgp.mapper
+#mbgp.packageConfig.xml=com.wisdom.plugin.demo.mbgp.mapper
 
 ````
 
