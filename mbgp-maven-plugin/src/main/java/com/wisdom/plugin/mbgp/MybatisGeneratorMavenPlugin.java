@@ -53,7 +53,7 @@ public class MybatisGeneratorMavenPlugin extends AbstractMojo {
         DataSourceConfiguration dc = StringUtils.isNoneBlank(dataSourceConfiguration)?
                 (DataSourceConfiguration) Class.forName(dataSourceConfiguration).newInstance():new DataSourceConfiguration();
         InjectionConfiguration ic = StringUtils.isNotBlank(injectionConfiguration)?
-                (InjectionConfiguration) Class.forName(injectionConfiguration).newInstance():new InjectionConfiguration();
+                (InjectionConfiguration) Class.forName(injectionConfiguration).newInstance():new JunitTestConfiguration();
         PackageConfiguration pc = StringUtils.isNotBlank(packageConfiguration)?
                 (PackageConfiguration) Class.forName(packageConfiguration).newInstance():new PackageConfiguration();
         StrategyConfiguration sc = StringUtils.isNotBlank(strategyConfiguration)?
