@@ -14,6 +14,7 @@ public class DefaultProperites extends HashMap<String,Object> {
             {"mbgp.globalConfig.open",false},
             {"mbgp.globalConfig.outputDir",System.getProperty("user.dir") + "/src/main/java"},
             {"mbgp.globalConfig.swagger2",true},
+            {"mbgp.packageConfig.parent",""},
             {"mbgp.templateConfig.controller",""},
             {"mbgp.templateConfig.service",""},
             {"mbgp.templateConfig.serviceImpl",""},
@@ -26,6 +27,7 @@ public class DefaultProperites extends HashMap<String,Object> {
             {"mbgp.strategyConfig.include",".*"},
             {"mbgp.strategyConfig.setTablePrefix",true},
             {"mbgp.strategyConfig.restControllerStyle",false},
+            {"mbgp.strategyConfig.entityTableFieldAnnotationEnable",true},
             //simple 生成一个 && off 不生成 && 其他值生成全部
             {"mbgp.testConfig.isTest","simple"}
     };

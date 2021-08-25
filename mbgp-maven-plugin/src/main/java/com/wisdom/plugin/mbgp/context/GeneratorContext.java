@@ -34,8 +34,8 @@ public class GeneratorContext extends HashMap<String,Object> {
     private StrategyConfig strategyConfig = new StrategyConfig();
 
     private GeneratorContext(PluginConfig pc){
-        this.putAll(pc);
         this.putAll(defaultProperites);
+        this.putAll(pc);
         logger.info(this.toString());
     }
 
@@ -70,4 +70,27 @@ public class GeneratorContext extends HashMap<String,Object> {
 
     }
 
+    public GlobalConfig getGlobalConfig() {
+        return globalConfig;
+    }
+
+    public DataSourceConfig getDataSourceConfig() {
+        return dataSourceConfig;
+    }
+
+    public PackageConfig getPackageConfig() {
+        return packageConfig;
+    }
+
+    public TemplateConfig getTemplateConfig() {
+        return templateConfig;
+    }
+
+    public InjectionConfig getInjectionConfig() {
+        return injectionConfig;
+    }
+
+    public StrategyConfig getStrategyConfig() {
+        return strategyConfig;
+    }
 }

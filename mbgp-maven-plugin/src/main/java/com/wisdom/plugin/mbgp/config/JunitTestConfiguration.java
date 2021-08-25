@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.FileOutConfig;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.wisdom.plugin.mbgp.context.GeneratorContext;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.naming.ConfigurationException;
 import java.util.logging.Logger;
@@ -26,8 +27,9 @@ public class JunitTestConfiguration extends InjectionConfiguration {
                 public String outputFile(TableInfo tableInfo) {
                     if(flag) {
                         String mapperLocation = null;
-                        if (generatorContext.containsKey("mbgp.packageConfig.parent")) {
-                            mapperLocation = generatorContext.get("mbgp.packageConfig.parent").toString() + ".mapper";
+                        String parent = generatorContext.get("mbgp.packageConfig.parent").toString();
+                        if (StringUtils.isNotBlank(parent)) {
+                            mapperLocation = parent + ".mapper";
                         }
                         if (generatorContext.containsKey("mbgp.packageConfig.entity")) {
                             mapperLocation = generatorContext.get("mbgp.packageConfig.mapper").toString();
