@@ -47,12 +47,14 @@ public class PluginConfig extends HashMap<String,Object> {
     private void setYmlMap(Map<String,String> resultMap,String pkey,Map<String, Object> yamlMap){
         for(String key:yamlMap.keySet()){
             Object value = yamlMap.get(key);
-            String allKey = pkey == null?key:pkey + "." + key;
-            if(value instanceof Map){
-                Map<String,Object> valueMap = (Map<String, Object>) value;
-                this.setYmlMap(resultMap,allKey,valueMap);
-            }else {
-                resultMap.put(allKey,value.toString());
+            if(value != null) {
+                String allKey = pkey == null ? key : pkey + "." + key;
+                if (value instanceof Map) {
+                    Map<String, Object> valueMap = (Map<String, Object>) value;
+                    this.setYmlMap(resultMap, allKey, valueMap);
+                } else {
+                    resultMap.put(allKey, value.toString());
+                }
             }
         }
 
