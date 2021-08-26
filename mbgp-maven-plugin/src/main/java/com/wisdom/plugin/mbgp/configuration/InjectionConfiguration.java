@@ -1,4 +1,4 @@
-package com.wisdom.plugin.mbgp.config;
+package com.wisdom.plugin.mbgp.configuration;
 
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
