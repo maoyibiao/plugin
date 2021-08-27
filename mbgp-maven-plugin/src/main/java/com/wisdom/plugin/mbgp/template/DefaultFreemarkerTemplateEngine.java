@@ -9,13 +9,18 @@ import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.FileType;
 import com.baomidou.mybatisplus.generator.engine.AbstractTemplateEngine;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
+import com.wisdom.plugin.mbgp.configuration.AbstractInjectionConfiguration;
+import com.wisdom.plugin.mbgp.context.GeneratorContext;
 
 import java.io.File;
 import java.util.List;
 import java.util.Map;
 
 public class DefaultFreemarkerTemplateEngine extends FreemarkerTemplateEngine {
-
+    private GeneratorContext generatorContext;
+    public DefaultFreemarkerTemplateEngine(GeneratorContext generatorContext){
+        this.generatorContext = generatorContext;
+    }
     @Override
     public AbstractTemplateEngine batchOutput() {
         try {
@@ -24,8 +29,8 @@ public class DefaultFreemarkerTemplateEngine extends FreemarkerTemplateEngine {
                 Map<String, Object> objectMap = getObjectMap(tableInfo);
                 Map<String, String> pathInfo = getConfigBuilder().getPathInfo();
                 TemplateConfig template = getConfigBuilder().getTemplate();
-                // 自定义内容
-                InjectionConfig injectionConfig = getConfigBuilder().getInjectionConfig();
+                // 自定义内容 （废弃）
+                /*InjectionConfig injectionConfig = getConfigBuilder().getInjectionConfig();
                 if (null != injectionConfig) {
                     injectionConfig.initTableMap(tableInfo);
                     objectMap.put("cfg", injectionConfig.getMap());
@@ -35,6 +40,22 @@ public class DefaultFreemarkerTemplateEngine extends FreemarkerTemplateEngine {
                             String filePath = foc.outputFile(tableInfo);
                             if (isCreate(FileType.OTHER, filePath)) {
                                 writerFile(objectMap, foc.getTemplatePath(), filePath);
+                            }
+                        }
+                    }
+                }*/
+                for(AbstractInjectionConfiguration injectionConfiguration : generatorContext.getInjectionConfigurations()) {
+                    InjectionConfig injectionConfig = injectionConfiguration.getInjectionConfig(generatorContext);
+                    if (null != injectionConfig) {
+                        injectionConfig.initTableMap(tableInfo);
+                        objectMap.put("cfg", injectionConfig.getMap());
+                        List<FileOutConfig> focList = injectionConfig.getFileOutConfigList();
+                        if (CollectionUtils.isNotEmpty(focList)) {
+                            for (FileOutConfig foc : focList) {
+                                String filePath = foc.outputFile(tableInfo);
+                                if (isCreate(FileType.OTHER, filePath)) {
+                                    writerFile(objectMap, foc.getTemplatePath(), filePath);
+                                }
                             }
                         }
                     }
@@ -56,7 +77,8 @@ public class DefaultFreemarkerTemplateEngine extends FreemarkerTemplateEngine {
                 }
                 // MpMapper.xml
                 if (null != tableInfo.getXmlName() && null != pathInfo.get(ConstVal.XML_PATH)) {
-                    String xmlFile = String.format((pathInfo.get(ConstVal.XML_PATH) + File.separator + tableInfo.getXmlName() + ConstVal.XML_SUFFIX), entityName);
+                    String dir = pathInfo.get(ConstVal.XML_PATH).replaceAll("(\\\\|/)java(\\\\|/)","/resources/");
+                    String xmlFile = String.format((dir + File.separator + tableInfo.getXmlName() + ConstVal.XML_SUFFIX), entityName);
                     if (isCreate(FileType.XML, xmlFile)) {
                         writerFile(objectMap, templateFilePath(template.getXml()), xmlFile);
                     }

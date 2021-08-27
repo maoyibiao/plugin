@@ -46,7 +46,7 @@ public abstract class AbstractProcessConfiguration<T> implements IGeneratorConfi
             className = GlobalConfig.class.getSimpleName();
         }
         if(config instanceof InjectionConfig){
-            className = InjectionConfig.class.getSimpleName();
+            className = config.getClass().getSimpleName();
         }
         if(config instanceof PackageConfig){
             className = PackageConfig.class.getSimpleName();

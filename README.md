@@ -102,6 +102,8 @@ mbgp.packageConfig.parent=com.wisdom.plugin.demo.mbgp
 #mbgp.packageConfig.xml=com.wisdom.plugin.demo.mbgp.mapper
 #simple 生成一个 && off 不生成 && 其他值生成全部
 #mbgp.testConfig.isTest=simple
+#默认生成Junit5的单元测试
+#mbgp.testConfig.junitVersion=5
 ````
 
 application.yml

@@ -35,13 +35,14 @@ public class MybatisGeneratorMavenPlugin extends AbstractMojo {
     private final static String output = System.getProperty("user.dir") + "/src/main/java";
 
     private GeneratorContext initContext(PluginConfig p) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
-        GlobalConfiguration gc = SpiUtils.loadBean(GlobalConfiguration.class);
-        DataSourceConfiguration dc = SpiUtils.loadBean(DataSourceConfiguration.class);
-        InjectionConfiguration ic = SpiUtils.loadBean(InjectionConfiguration.class);
-        PackageConfiguration pc = SpiUtils.loadBean(PackageConfiguration.class);
-        StrategyConfiguration sc = SpiUtils.loadBean(StrategyConfiguration.class);
-        TemplateConfiguartion tc = SpiUtils.loadBean(TemplateConfiguartion.class);
-        return new GeneratorContext(gc,dc,ic,pc,sc,tc,p);
+        GlobalConfiguration gc = SpiUtils.loadDefault(GlobalConfiguration.class);
+        DataSourceConfiguration dc = SpiUtils.loadDefault(DataSourceConfiguration.class);
+        PackageConfiguration pc = SpiUtils.loadDefault(PackageConfiguration.class);
+        StrategyConfiguration sc = SpiUtils.loadDefault(StrategyConfiguration.class);
+        TemplateConfiguartion tc = SpiUtils.loadDefault(TemplateConfiguartion.class);
+        List<AbstractInjectionConfiguration> ics = SpiUtils.loadBeans(AbstractInjectionConfiguration.class);
+        ics.add(SpiUtils.loadDefault(JunitTestConfiguration.class));
+        return new GeneratorContext(gc,dc,ics,pc,sc,tc,p);
     }
 
     private PluginConfig initProperties() throws IOException {

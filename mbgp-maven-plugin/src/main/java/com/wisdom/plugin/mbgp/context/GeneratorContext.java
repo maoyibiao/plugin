@@ -1,14 +1,14 @@
 package com.wisdom.plugin.mbgp.context;
 
 import com.baomidou.mybatisplus.generator.AutoGenerator;
-import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
-import com.wisdom.plugin.mbgp.config.*;
+import com.wisdom.plugin.mbgp.config.DefaultProperites;
 import com.wisdom.plugin.mbgp.configuration.*;
 import com.wisdom.plugin.mbgp.template.DefaultFreemarkerTemplateEngine;
 import com.wisdom.plugin.utils.PluginConfig;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class GeneratorContext extends HashMap<String,Object> {
@@ -16,7 +16,7 @@ public class GeneratorContext extends HashMap<String,Object> {
     private DefaultProperites defaultProperites = new DefaultProperites();
     private GlobalConfiguration globalConfiguration;
     private DataSourceConfiguration dataSourceConfiguration;
-    private InjectionConfiguration injectionConfiguration;
+    private List<AbstractInjectionConfiguration> injectionConfigurations;
     private PackageConfiguration packageConfiguration;
     private StrategyConfiguration strategyConfiguration;
     private TemplateConfiguartion templateConfiguartion;
@@ -25,12 +25,6 @@ public class GeneratorContext extends HashMap<String,Object> {
     private DataSourceConfig dataSourceConfig = new DataSourceConfig();
     private PackageConfig packageConfig = new PackageConfig();
     private TemplateConfig templateConfig = new TemplateConfig();
-    private InjectionConfig injectionConfig = new InjectionConfig() {
-        @Override
-        public void initMap() {
-
-        }
-    };
     private StrategyConfig strategyConfig = new StrategyConfig();
 
     private GeneratorContext(PluginConfig pc){
@@ -40,12 +34,12 @@ public class GeneratorContext extends HashMap<String,Object> {
     }
 
 
-    public GeneratorContext(GlobalConfiguration gc,DataSourceConfiguration dc,InjectionConfiguration ic,
+    public GeneratorContext(GlobalConfiguration gc,DataSourceConfiguration dc,List<AbstractInjectionConfiguration> ics,
                             PackageConfiguration pc,StrategyConfiguration sc,TemplateConfiguartion tc,PluginConfig p){
         this(p);
         this.globalConfiguration = gc;
         this.dataSourceConfiguration = dc;
-        this.injectionConfiguration = ic;
+        this.injectionConfigurations = ics;
         this.packageConfiguration = pc;
         this.strategyConfiguration = sc;
         this.templateConfiguartion = tc;
@@ -61,12 +55,10 @@ public class GeneratorContext extends HashMap<String,Object> {
         mpg.setPackageInfo(packageConfig);
         this.templateConfig = this.templateConfiguartion.config(this,templateConfig);
         mpg.setTemplate(templateConfig);
-        this.injectionConfig = this.injectionConfiguration.config(this,injectionConfig);
-        mpg.setCfg(injectionConfig);
         this.strategyConfig = this.strategyConfiguration.config(this,strategyConfig);
         strategyConfig.setTablePrefix(packageConfig.getModuleName() + "_");
         mpg.setStrategy(strategyConfig);
-        mpg.setTemplateEngine(new DefaultFreemarkerTemplateEngine()).execute();
+        mpg.setTemplateEngine(new DefaultFreemarkerTemplateEngine(this)).execute();
 
     }
 
@@ -86,11 +78,11 @@ public class GeneratorContext extends HashMap<String,Object> {
         return templateConfig;
     }
 
-    public InjectionConfig getInjectionConfig() {
-        return injectionConfig;
-    }
-
     public StrategyConfig getStrategyConfig() {
         return strategyConfig;
+    }
+
+    public List<AbstractInjectionConfiguration> getInjectionConfigurations() {
+        return injectionConfigurations;
     }
 }

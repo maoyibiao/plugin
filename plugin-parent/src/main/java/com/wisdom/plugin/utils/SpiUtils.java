@@ -7,11 +7,7 @@ import java.util.ServiceLoader;
 
 public class SpiUtils {
     public static <T> T load(Class<T> clazz){
-        List<T> beans = new ArrayList<>();
-        Iterator<T> it = ServiceLoader.load(clazz).iterator();
-        while (it.hasNext()){
-            beans.add(it.next());
-        }
+        List<T> beans = SpiUtils.loadBeans(clazz);
         if(beans.isEmpty()){
             return null;
         }
@@ -21,7 +17,16 @@ public class SpiUtils {
         return beans.get(0);
     }
 
-    public static <T> T loadBean(Class<T> clazz) throws IllegalAccessException, InstantiationException {
+    public static <T> List<T> loadBeans(Class<T> clazz){
+        List<T> beans = new ArrayList<>();
+        Iterator<T> it = ServiceLoader.load(clazz).iterator();
+        while (it.hasNext()){
+            beans.add(it.next());
+        }
+        return beans;
+    }
+
+    public static <T> T loadDefault(Class<T> clazz) throws IllegalAccessException, InstantiationException {
         List<T> beans = new ArrayList<>();
         Iterator<T> it = ServiceLoader.load(clazz).iterator();
         while (it.hasNext()){
