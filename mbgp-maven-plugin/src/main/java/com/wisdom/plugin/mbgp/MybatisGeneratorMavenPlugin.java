@@ -1,9 +1,9 @@
 package com.wisdom.plugin.mbgp;
 
-import com.wisdom.plugin.mbgp.config.*;
+import com.wisdom.plugin.mbgp.configuration.*;
 import com.wisdom.plugin.mbgp.context.GeneratorContext;
 import com.wisdom.plugin.utils.PluginConfig;
-import org.apache.commons.lang3.StringUtils;
+import com.wisdom.plugin.utils.SpiUtils;
 import org.apache.maven.model.Resource;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -12,7 +12,6 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
@@ -30,37 +29,20 @@ public class MybatisGeneratorMavenPlugin extends AbstractMojo {
             readonly = true
     )
     protected MavenProject project;
-    @Parameter
-    private String globalConfiguration;
-    @Parameter
-    private String dataSourceConfiguration;
-    @Parameter
-    private String injectionConfiguration;
-    @Parameter
-    private String packageConfiguration;
-    @Parameter
-    private String strategyConfiguration;
-    @Parameter
-    private String templateConfiguartion;
     @Parameter(defaultValue = "/application.properties,/application.yml")
     private String properties;
 
     private final static String output = System.getProperty("user.dir") + "/src/main/java";
 
     private GeneratorContext initContext(PluginConfig p) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
-        GlobalConfiguration gc = StringUtils.isNotBlank(globalConfiguration)?
-                (GlobalConfiguration) Class.forName(globalConfiguration).newInstance():new GlobalConfiguration();
-        DataSourceConfiguration dc = StringUtils.isNoneBlank(dataSourceConfiguration)?
-                (DataSourceConfiguration) Class.forName(dataSourceConfiguration).newInstance():new DataSourceConfiguration();
-        InjectionConfiguration ic = StringUtils.isNotBlank(injectionConfiguration)?
-                (InjectionConfiguration) Class.forName(injectionConfiguration).newInstance():new JunitTestConfiguration();
-        PackageConfiguration pc = StringUtils.isNotBlank(packageConfiguration)?
-                (PackageConfiguration) Class.forName(packageConfiguration).newInstance():new PackageConfiguration();
-        StrategyConfiguration sc = StringUtils.isNotBlank(strategyConfiguration)?
-                (StrategyConfiguration) Class.forName(strategyConfiguration).newInstance():new StrategyConfiguration();
-        TemplateConfiguartion tc = StringUtils.isNotBlank(templateConfiguartion)?
-                (TemplateConfiguartion) Class.forName(templateConfiguartion).newInstance():new TemplateConfiguartion();
-        return new GeneratorContext(gc,dc,ic,pc,sc,tc,p);
+        GlobalConfiguration gc = SpiUtils.loadDefault(GlobalConfiguration.class);
+        DataSourceConfiguration dc = SpiUtils.loadDefault(DataSourceConfiguration.class);
+        PackageConfiguration pc = SpiUtils.loadDefault(PackageConfiguration.class);
+        StrategyConfiguration sc = SpiUtils.loadDefault(StrategyConfiguration.class);
+        TemplateConfiguartion tc = SpiUtils.loadDefault(TemplateConfiguartion.class);
+        List<AbstractInjectionConfiguration> ics = SpiUtils.loadBeans(AbstractInjectionConfiguration.class);
+        ics.add(SpiUtils.loadDefault(JunitTestConfiguration.class));
+        return new GeneratorContext(gc,dc,ics,pc,sc,tc,p);
     }
 
     private PluginConfig initProperties() throws IOException {

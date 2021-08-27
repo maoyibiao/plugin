@@ -15,10 +15,11 @@ public class DefaultProperites extends HashMap<String,Object> {
             {"mbgp.globalConfig.outputDir",System.getProperty("user.dir") + "/src/main/java"},
             {"mbgp.globalConfig.swagger2",true},
             {"mbgp.packageConfig.parent",""},
+            {"mbgp.packageConfig.xml","mapper"},
             {"mbgp.templateConfig.controller",""},
             {"mbgp.templateConfig.service",""},
             {"mbgp.templateConfig.serviceImpl",""},
-            {"mbgp.templateConfig.xml",""},
+            //{"mbgp.templateConfig.xml",""},
             {"mbgp.strategyConfig.naming", NamingStrategy.underline_to_camel},
             {"mbgp.strategyConfig.columnNaming",NamingStrategy.underline_to_camel},
             {"mbgp.strategyConfig.entityLombokModel",true},
@@ -29,7 +30,8 @@ public class DefaultProperites extends HashMap<String,Object> {
             {"mbgp.strategyConfig.restControllerStyle",false},
             {"mbgp.strategyConfig.entityTableFieldAnnotationEnable",true},
             //simple 生成一个 && off 不生成 && 其他值生成全部
-            {"mbgp.testConfig.isTest","simple"}
+            {"mbgp.testConfig.isTest","simple"},
+            {"mbgp.testConfig.junitVersion","5"}
     };
     {
         for(Object[]  defaultParam: defaultParams){

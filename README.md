@@ -102,6 +102,8 @@ mbgp.packageConfig.parent=com.wisdom.plugin.demo.mbgp
 #mbgp.packageConfig.xml=com.wisdom.plugin.demo.mbgp.mapper
 #simple 生成一个 && off 不生成 && 其他值生成全部
 #mbgp.testConfig.isTest=simple
+#默认生成Junit5的单元测试
+#mbgp.testConfig.junitVersion=5
 ````
 
 application.yml
@@ -147,7 +149,7 @@ mbgp:
 ````
 
 插件提供默认配置，除了生成路径其他可以不配置，如果需要调整默认配置可以在properties中直接修改参数，
-参数格式：mbgp.对象名.属性=值。如：mbgp.globalConfig.swagger2=false。当然也可以通过重写类后在pom中配置自定义的类路径
+参数格式：mbgp.对象名.属性=值。如：mbgp.globalConfig.swagger2=false。当然也可以通过重写类自定义逻辑(重写的类需要通过jar包依赖)。
 
 ````
 
@@ -164,7 +166,6 @@ mbgp:
                 </dependencies>
                 <configuration>
                     <properties>/application-dev.properties</properties>
-                    <injectionConfiguration>com.xxx.xxx.MyInjectionConfiguration</injectionConfiguration>
                 </configuration>
             </plugin>
 ````

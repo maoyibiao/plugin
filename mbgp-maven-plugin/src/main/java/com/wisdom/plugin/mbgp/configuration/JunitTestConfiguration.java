@@ -1,28 +1,33 @@
-package com.wisdom.plugin.mbgp.config;
+package com.wisdom.plugin.mbgp.configuration;
 
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.FileOutConfig;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
+import com.wisdom.plugin.mbgp.config.TestConfig;
 import com.wisdom.plugin.mbgp.context.GeneratorContext;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.naming.ConfigurationException;
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
-public class JunitTestConfiguration extends InjectionConfiguration {
+public class JunitTestConfiguration extends AbstractInjectionConfiguration<TestConfig> {
     private boolean flag = true;
     private String templatePath = "/templates/MybatisGeneratorTest.java.ftl";
     private Logger logger = Logger.getLogger(JunitTestConfiguration.class.getName());
     @Override
-    public InjectionConfig config(GeneratorContext generatorContext, InjectionConfig config) {
-        InjectionConfig ic = super.config(generatorContext, config);
-        String isTest = generatorContext.get("mbgp.testConfig.isTest").toString();
+    public TestConfig injectionConfig(GeneratorContext generatorContext, TestConfig config) {
+        String isTest = config.getIsTest();
         if("off".equals(isTest.toLowerCase())){
             flag = false;
         }
         if(flag){
-            ic.getFileOutConfigList().add(new FileOutConfig(templatePath) {
+            if(config.getFileOutConfigList() == null){
+                config.setFileOutConfigList(new ArrayList<>());
+            }
+            config.getMap().put("testConfig",config);
+            config.getFileOutConfigList().add(new FileOutConfig(templatePath) {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
                     if(flag) {
@@ -46,6 +51,6 @@ public class JunitTestConfiguration extends InjectionConfiguration {
                 }
             });
         }
-        return ic;
+        return config;
     }
 }

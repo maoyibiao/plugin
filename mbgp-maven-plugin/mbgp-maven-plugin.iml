@@ -50,6 +50,7 @@
     <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-component-annotations:1.7.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.12.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.plugin-tools:maven-plugin-annotations:3.5.2" level="project" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.20" level="project" />
     <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus-boot-starter:3.4.1" level="project" />
     <orderEntry type="library" name="Maven: com.baomidou:mybatis-plus:3.4.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.5.3" level="project" />
